@@ -1,0 +1,501 @@
+/* ═══════════════════════════════════════════════════════════
+   EVENTOS BELGRANO — CSS GLOBAL DEL PROYECTO
+   Paleta: Crema #FAF9F6 | Dorado #D4AF37 | Gris #CFCFCF
+   Tipografía: Great Vibes (títulos) | Libre Baskerville (textos)
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── 1. VARIABLES DE MARCA ─────────────────────────────── */
+:root {
+    --eb-cream:       #FAF9F6;
+    --eb-cream-dark:  #F0EDE6;
+    --eb-gold:        #D4AF37;
+    --eb-gold-dark:   #B8962E;
+    --eb-gold-light:  #E8D17A;
+    --eb-gray:        #CFCFCF;
+    --eb-gray-dark:   #888888;
+    --eb-charcoal:    #2C2C2C;
+    --eb-white:       #FFFFFF;
+
+    --eb-font-script: 'Great Vibes', cursive;
+    --eb-font-serif:  'Libre Baskerville', Georgia, serif;
+
+    --eb-navbar-height: 80px;
+    --eb-transition: 0.35s ease;
+    --eb-radius: 2px;
+    --eb-shadow: 0 8px 40px rgba(0,0,0,0.08);
+    --eb-shadow-gold: 0 4px 20px rgba(212,175,55,0.25);
+}
+
+/* ─── 2. RESET & BASE ───────────────────────────────────── */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--eb-cream);
+    color: var(--eb-charcoal);
+    font-family: var(--eb-font-serif);
+    font-size: 1rem;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: var(--eb-gold);
+    text-decoration: none;
+    transition: color var(--eb-transition);
+}
+a:hover {
+    color: var(--eb-gold-dark);
+}
+
+/* ─── 3. TIPOGRAFÍA GLOBAL ──────────────────────────────── */
+.eb-script {
+    font-family: var(--eb-font-script);
+    font-weight: 400;
+}
+
+.eb-serif {
+    font-family: var(--eb-font-serif);
+}
+
+.eb-gold-text {
+    color: var(--eb-gold);
+}
+
+.eb-section-title {
+    font-family: var(--eb-font-script);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--eb-charcoal);
+    line-height: 1.1;
+    margin-bottom: 0.25rem;
+}
+
+.eb-section-subtitle {
+    font-family: var(--eb-font-serif);
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--eb-gold);
+    margin-bottom: 1.5rem;
+}
+
+.eb-section-body {
+    font-family: var(--eb-font-serif);
+    font-size: 1rem;
+    color: var(--eb-gray-dark);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.9;
+}
+
+/* ─── 4. NAVBAR ─────────────────────────────────────────── */
+.eb-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: transparent;
+    height: var(--eb-navbar-height);
+    padding: 0;
+    transition: background var(--eb-transition), box-shadow var(--eb-transition);
+    border-bottom: 1px solid transparent;
+}
+
+.eb-navbar.scrolled {
+    background: rgba(250, 249, 246, 0.97);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    border-bottom-color: var(--eb-gray);
+    backdrop-filter: blur(10px);
+}
+
+/* Marca / Logo */
+.eb-brand {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    padding: 0;
+}
+
+.eb-brand .eb-brand-script {
+    font-family: var(--eb-font-script);
+    font-size: 1.8rem;
+    color: var(--eb-cream-dark);
+    transition: color var(--eb-transition);
+    line-height: 1;
+}
+
+.eb-brand .eb-brand-serif {
+    font-family: var(--eb-font-serif);
+    font-size: 0.55rem;
+    letter-spacing: 0.35em;
+    color: var(--eb-gold);
+    text-transform: uppercase;
+    margin-top: -4px;
+}
+
+.eb-navbar.scrolled .eb-brand .eb-brand-script {
+    color: var(--eb-charcoal);
+}
+
+/* Nav Links */
+.eb-nav-link {
+    font-family: var(--eb-font-serif);
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--eb-cream) !important;
+    padding: 0.5rem 0.9rem !important;
+    position: relative;
+    transition: color var(--eb-transition);
+}
+
+.eb-navbar.scrolled .eb-nav-link {
+    color: var(--eb-charcoal) !important;
+}
+
+.eb-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 1px;
+    background: var(--eb-gold);
+    transition: width var(--eb-transition);
+}
+
+.eb-nav-link:hover::after,
+.eb-nav-link.active::after {
+    width: 60%;
+}
+
+.eb-nav-link.active {
+    color: var(--eb-gold) !important;
+}
+
+/* Botón CTA Navbar */
+.eb-btn-nav {
+    font-family: var(--eb-font-serif);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--eb-charcoal) !important;
+    background: var(--eb-gold);
+    padding: 0.6rem 1.6rem;
+    border: 1px solid var(--eb-gold);
+    transition: all var(--eb-transition);
+    display: inline-block;
+}
+
+.eb-btn-nav:hover,
+.eb-btn-nav.active {
+    background: var(--eb-gold-dark);
+    border-color: var(--eb-gold-dark);
+    color: var(--eb-white) !important;
+    transform: translateY(-1px);
+    box-shadow: var(--eb-shadow-gold);
+}
+
+/* Mobile toggler */
+.eb-toggler {
+    border: 1px solid var(--eb-gray); 
+    color: var(--eb-charcoal); 
+    font-size: 1.3rem;
+    background: transparent;
+    padding: 0.3rem 0.6rem;
+    transition: all var(--eb-transition);
+}
+
+.eb-navbar.scrolled .eb-toggler {
+    border-color: var(--eb-gray);
+    color: var(--eb-charcoal);
+}
+
+/* ─── 5. BOTONES GLOBALES ───────────────────────────────── */
+.eb-btn-primary {
+    display: inline-block;
+    font-family: var(--eb-font-serif);
+    font-size: 0.78rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--eb-charcoal);
+    background: var(--eb-gold);
+    border: 1px solid var(--eb-gold);
+    padding: 0.85rem 2.5rem;
+    transition: all var(--eb-transition);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.eb-btn-primary:hover {
+    background: var(--eb-gold-dark);
+    border-color: var(--eb-gold-dark);
+    color: var(--eb-white);
+    transform: translateY(-2px);
+    box-shadow: var(--eb-shadow-gold);
+}
+
+.eb-btn-outline {
+    display: inline-block;
+    font-family: var(--eb-font-serif);
+    font-size: 0.78rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--eb-white);
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.7);
+    padding: 0.85rem 2.5rem;
+    transition: all var(--eb-transition);
+    text-decoration: none;
+}
+
+.eb-btn-outline:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: var(--eb-white);
+    color: var(--eb-white);
+}
+
+.eb-btn-outline-dark {
+    display: inline-block;
+    font-family: var(--eb-font-serif);
+    font-size: 0.78rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--eb-charcoal);
+    background: transparent;
+    border: 1px solid var(--eb-charcoal);
+    padding: 0.85rem 2.5rem;
+    transition: all var(--eb-transition);
+    text-decoration: none;
+}
+
+.eb-btn-outline-dark:hover {
+    background: var(--eb-charcoal);
+    color: var(--eb-cream);
+}
+
+/* ─── 6. ORNAMENTO DECORATIVO ───────────────────────────── */
+.eb-ornament {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem auto;
+    width: fit-content;
+}
+
+.eb-ornament::before,
+.eb-ornament::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: var(--eb-gold);
+}
+
+.eb-ornament-diamond {
+    width: 6px;
+    height: 6px;
+    background: var(--eb-gold);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+}
+
+/* ─── 7. FOOTER ─────────────────────────────────────────── */
+.eb-footer {
+    background: var(--eb-charcoal);
+    color: var(--eb-gray);
+    padding: 4rem 0 2rem;
+}
+
+.eb-footer-brand {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.eb-footer-brand .eb-brand-script {
+    font-family: var(--eb-font-script);
+    font-size: 2rem;
+    color: var(--eb-cream);
+}
+
+.eb-footer-brand .eb-brand-serif {
+    font-family: var(--eb-font-serif);
+    font-size: 0.55rem;
+    letter-spacing: 0.35em;
+    color: var(--eb-gold);
+    text-transform: uppercase;
+    margin-top: -4px;
+}
+
+.eb-footer-tagline {
+    font-family: var(--eb-font-serif);
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--eb-gray-dark);
+    line-height: 1.6;
+}
+
+.eb-footer-heading {
+    font-family: var(--eb-font-serif);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--eb-gold);
+    margin-bottom: 1.2rem;
+}
+
+.eb-footer-links {
+    font-family: var(--eb-font-serif);
+    font-size: 0.9rem;
+    color: var(--eb-gray-dark);
+}
+
+.eb-footer-links li {
+    margin-bottom: 0.6rem;
+}
+
+.eb-footer-links a {
+    color: var(--eb-gray-dark);
+    transition: color var(--eb-transition);
+}
+.eb-footer-links a:hover {
+    color: var(--eb-gold);
+}
+
+.eb-footer-divider {
+    border-color: rgba(255,255,255,0.08);
+}
+
+.eb-footer-copy {
+    font-family: var(--eb-font-serif);
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.3);
+    margin: 0;
+}
+
+.eb-social {
+    display: flex;
+    gap: 1rem;
+}
+
+.eb-social a {
+    color: var(--eb-gray-dark);
+    font-size: 1.1rem;
+    transition: color var(--eb-transition), transform var(--eb-transition);
+}
+
+.eb-social a:hover {
+    color: var(--eb-gold);
+    transform: translateY(-2px);
+}
+
+/* ─── 8. ALERT PERSONALIZADO ────────────────────────────── */
+.eb-alert {
+    font-family: var(--eb-font-serif);
+    font-size: 0.9rem;
+    border: none;
+    border-left: 3px solid var(--eb-gold);
+    background: rgba(212,175,55,0.08);
+    border-radius: 0;
+    color: var(--eb-charcoal);
+}
+
+/* ─── 9. SEPARADOR DORADO ───────────────────────────────── */
+.eb-divider {
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: var(--eb-gold);
+    margin: 1.5rem auto;
+}
+
+/* ─── 10. PÁGINA INTERNA: HEADER ────────────────────────── */
+.eb-page-header {
+    padding: calc(var(--eb-navbar-height) + 5rem) 0 4rem;
+    background: linear-gradient(160deg, var(--eb-cream) 0%, var(--eb-cream-dark) 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.eb-page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(ellipse at 80% 50%, rgba(212,175,55,0.06) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+/* ─── 11. UTILIDADES ────────────────────────────────────── */
+.pt-navbar {
+    padding-top: var(--eb-navbar-height);
+}
+
+/* ─── 12. ANIMACIONES DE ENTRADA ────────────────────────── */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.animate-fade-up {
+    animation: fadeUp 0.9s ease forwards;
+}
+
+.animate-fade-up-delay-1 { animation-delay: 0.15s; opacity: 0; animation-fill-mode: forwards; animation-name: fadeUp; animation-duration: 0.9s; animation-timing-function: ease; }
+.animate-fade-up-delay-2 { animation-delay: 0.30s; opacity: 0; animation-fill-mode: forwards; animation-name: fadeUp; animation-duration: 0.9s; animation-timing-function: ease; }
+.animate-fade-up-delay-3 { animation-delay: 0.45s; opacity: 0; animation-fill-mode: forwards; animation-name: fadeUp; animation-duration: 0.9s; animation-timing-function: ease; }
+.animate-fade-up-delay-4 { animation-delay: 0.60s; opacity: 0; animation-fill-mode: forwards; animation-name: fadeUp; animation-duration: 0.9s; animation-timing-function: ease; }
+
+/* ─── 13. RESPONSIVE ────────────────────────────────────── */
+@media (max-width: 991.98px) {
+    .eb-navbar {
+        background: rgba(250, 249, 246, 0.98) !important;
+        backdrop-filter: blur(10px);
+    }
+
+    .eb-brand .eb-brand-script {
+        color: var(--eb-charcoal) !important;
+    }
+
+    .eb-nav-link {
+        color: var(--eb-charcoal) !important;
+        padding: 0.7rem 0 !important;
+    }
+
+    .eb-toggler {
+        border-color: var(--eb-gray) !important;
+        color: var(--eb-charcoal) !important;
+    }
+
+    .navbar-collapse {
+        padding: 1rem 0;
+        background: var(--eb-cream);
+        border-top: 1px solid var(--eb-gray);
+        margin-top: 0.5rem;
+    }
+
+    .eb-btn-nav {
+        margin-top: 0.5rem;
+        text-align: center;
+        display: block;
+    }
+}

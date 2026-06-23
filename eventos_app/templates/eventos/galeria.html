@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Galería de Eventos — Eventos Belgrano{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'eventos/css/galeria.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- ═══════════════════════════════════════
+     HEADER DE PÁGINA
+═══════════════════════════════════════ -->
+<section class="eb-galeria-header">
+    <div class="eb-gal-overlay"></div>
+    <div class="container eb-gal-content text-center">
+        <p class="eb-section-subtitle animate-fade-up">Momentos únicos</p>
+        <h1 class="eb-section-title animate-fade-up-delay-1" style="color: var(--eb-white);">
+            Galería de Eventos
+        </h1>
+        <div class="eb-ornament animate-fade-up-delay-2" style="--eb-gold: #D4AF37;">
+            <div class="eb-ornament-diamond"></div>
+        </div>
+        <p class="animate-fade-up-delay-2" style="
+            font-family: var(--eb-font-serif);
+            font-style: italic;
+            color: rgba(255,255,255,0.72);
+            max-width: 520px;
+            margin: 0 auto;
+            line-height: 1.8;
+        ">
+            Cada imagen cuenta una historia de amor, alegría y celebración.
+            Bienvenido al universo de Eventos Belgrano.
+        </p>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     FILTROS DE CATEGORÍA
+═══════════════════════════════════════ -->
+<section class="eb-filtros">
+    <div class="container">
+        <div class="eb-filtros-inner">
+            {% for categoria in categorias %}
+            <button
+                class="eb-filtro-btn {% if categoria.id == 'todos' %}active{% endif %}"
+                data-filter="{{ categoria.id }}">
+                {{ categoria.label }}
+            </button>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     GRILLA DE IMÁGENES
+═══════════════════════════════════════ -->
+<section class="eb-galeria-grid section-padding">
+    <div class="container">
+        <div class="row g-3" id="galeriaGrid">
+            {% for imagen in imagenes %}
+            <div class="col-sm-6 col-lg-4 eb-gal-item" data-categoria="{{ imagen.categoria }}">
+                <div class="eb-gal-card"
+                     data-titulo="{{ imagen.titulo }}"
+                     data-src="{% static 'eventos/img/' %}{{ imagen.src }}"
+                     data-alt="{{ imagen.alt }}">
+                    <div class="eb-gal-img-wrap">
+                        <img src="{% static 'eventos/img/' %}{{ imagen.src }}"
+                             alt="{{ imagen.alt }}"
+                             class="eb-gal-img"
+                             onerror="this.parentElement.classList.add('eb-gal-placeholder')">
+                        <div class="eb-gal-hover">
+                            <div class="eb-gal-hover-content">
+                                <i class="bi bi-zoom-in"></i>
+                                <p>{{ imagen.titulo }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="eb-gal-caption">
+                        <span class="eb-gal-titulo">{{ imagen.titulo }}</span>
+                        <span class="eb-gal-cat">{{ imagen.categoria|capfirst }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Mensaje si no hay resultados -->
+        <div class="eb-no-results text-center d-none" id="noResults">
+            <p class="eb-section-body">No hay imágenes en esta categoría.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     LIGHTBOX MODAL
+═══════════════════════════════════════ -->
+<div class="eb-lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vista ampliada">
+    <button class="eb-lb-close" id="lbClose" aria-label="Cerrar">&times;</button>
+    <button class="eb-lb-nav eb-lb-prev" id="lbPrev" aria-label="Anterior">
+        <i class="bi bi-chevron-left"></i>
+    </button>
+    <div class="eb-lb-inner">
+        <div class="eb-lb-img-wrap">
+            <img src="" alt="" id="lbImg" class="eb-lb-img">
+            <div class="eb-lb-placeholder" id="lbPlaceholder">✦</div>
+        </div>
+        <p class="eb-lb-caption" id="lbCaption"></p>
+    </div>
+    <button class="eb-lb-nav eb-lb-next" id="lbNext" aria-label="Siguiente">
+        <i class="bi bi-chevron-right"></i>
+    </button>
+</div>
+<div class="eb-lightbox-backdrop" id="lightboxBackdrop"></div>
+
+
+<!-- ═══════════════════════════════════════
+     CTA FINAL
+═══════════════════════════════════════ -->
+<section class="eb-galeria-cta text-center section-padding">
+    <div class="container">
+        <p class="eb-section-subtitle">¿Le gustó lo que vio?</p>
+        <h2 class="eb-section-title">Su celebración podría ser la próxima</h2>
+        <div class="eb-ornament">
+            <div class="eb-ornament-diamond"></div>
+        </div>
+        <p class="eb-section-body mt-3 mb-4">
+            Contáctenos y hagamos juntos su evento soñado.
+        </p>
+        <a href="{% url 'contacto' %}" class="eb-btn-primary">Solicitar una consulta</a>
+    </div>
+</section>
+
+{% endblock %}
+
+
+{% block extra_js %}
+    <!-- JavaScript específico para la galería -->
+    <script src="{% static 'eventos/js/galeria.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,258 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Eventos Belgrano — Salón de Casamientos y Eventos Sociales{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'eventos/css/inicio.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- ═══════════════════════════════════════
+     HERO — PORTADA PRINCIPAL
+═══════════════════════════════════════ -->
+<section class="eb-hero">
+    <div class="eb-hero-sparkler" style="background-image: url('{% static 'eventos/img/placeholder_boda.jpg' %}');"></div>
+    <div class="eb-hero-overlay"></div>
+    <div class="eb-hero-content">
+        <p class="eb-hero-eyebrow animate-fade-up">Salón de Casamientos &amp; Eventos Sociales</p>
+        <h1 class="eb-hero-title animate-fade-up-delay-1">
+                Eventos<br>
+                <em>Belgrano</em>
+        </h1>
+        <div class="eb-ornament animate-fade-up-delay-2">
+            <div class="eb-ornament-diamond"></div>
+        </div>
+        <p class="eb-hero-subtitle animate-fade-up-delay-2">
+            Donde los sueños se convierten en recuerdos eternos
+        </p>
+        <div class="eb-hero-actions animate-fade-up-delay-3">
+            <a href="{% url 'contacto' %}" class="eb-btn-primary">Reservar mi fecha</a>
+            <a href="{% url 'galeria' %}" class="eb-btn-outline">Ver galería</a>
+        </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="eb-scroll-indicator animate-fade-up-delay-4">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     INTRO — NUESTRA ESENCIA
+═══════════════════════════════════════ -->
+<section class="eb-intro section-padding text-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <p class="eb-section-subtitle">Belgrano, Buenos Aires</p>
+                <h2 class="eb-section-title">Un espacio creado<br>para celebrar el amor</h2>
+                <div class="eb-ornament">
+                    <div class="eb-ornament-diamond"></div>
+                </div>
+                <p class="eb-section-body">
+                    En <strong>Eventos Belgrano</strong> cada celebración es única. Nuestro salón combina
+                    la elegancia atemporal con el confort más moderno para que su evento sea
+                    exactamente como siempre lo soñó. Nos encargamos de cada detalle para que usted
+                    solo deba disfrutar.
+                </p>
+                <div class="mt-4">
+                    <a href="{% url 'servicios' %}" class="eb-btn-outline-dark">Conocer nuestros servicios</a>
+                </my-5>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     NÚMEROS — ESTADÍSTICAS
+═══════════════════════════════════════ -->
+<section class="eb-stats">
+    <div class="container">
+        <div class="row text-center g-0">
+            <div class="col-6 col-md-3 eb-stat-item">
+                <span class="eb-stat-num">500+</span>
+                <span class="eb-stat-label">Eventos realizados</span>
+            </div>
+            <div class="col-6 col-md-3 eb-stat-item">
+                <span class="eb-stat-num">15</span>
+                <span class="eb-stat-label">Años de experiencia</span>
+            </div>
+            <div class="col-6 col-md-3 eb-stat-item">
+                <span class="eb-stat-num">800</span>
+                <span class="eb-stat-label">Invitados por evento</span>
+            </div>
+            <div class="col-6 col-md-3 eb-stat-item">
+                <span class="eb-stat-num">98%</span>
+                <span class="eb-stat-label">Clientes satisfechos</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SERVICIOS DESTACADOS — PREVIEW
+═══════════════════════════════════════ -->
+<section class="eb-featured section-padding">
+    <div class="container">
+        <div class="row align-items-center gy-5">
+
+            <!-- Imagen izquierda -->
+            <div class="col-lg-6">
+                <div class="d-flex flex-column gap-4 h-100 justify-content-center">
+                    <div class="eb-img-stacked-item">
+                        <img src="{% static 'eventos/img/placeholder_salon.jpg' %}"
+                             alt="Salón principal iluminado para boda"
+                             class="eb-img-cover"
+                             onerror="this.style.display='none'; this.parentElement.classList.add('eb-img-placeholder')">
+                    </div>
+                    <div class="eb-img-stacked-item">
+                        <img src="{% static 'eventos/img/placeholder_flores.jpg' %}"
+                             alt="Detalle floral"
+                             class="eb-img-cover"
+                             onerror="this.style.display='none'; this.parentElement.classList.add('eb-img-placeholder')">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Texto derecha -->
+            <div class="col-lg-5 offset-lg-1">
+                <p class="eb-section-subtitle">Nuestro espacio</p>
+                <h2 class="eb-section-title text-start">Elegancia en<br>cada rincón</h2>
+                <div class="eb-divider" style="margin: 1.5rem 0;"></div>
+                <p style="color: var(--eb-gray-dark); font-style: italic; line-height: 1.9;">
+                    Nuestro salón principal tiene capacidad para hasta 800 invitados y cuenta con
+                    jardines privados, pistas de baile, iluminación escénica y ambientes diferenciados
+                    para ceremonia, cocktail y banquete.
+                </p>
+                <ul class="eb-check-list mt-4">
+                    <li>Salón principal con vigas de madera y cristalería</li>
+                    <li>Jardines privados para ceremonia al aire libre</li>
+                    <li>Estacionamiento para 200 vehículos</li>
+                    <li>Cocina de autor propia, sin catering externo</li>
+                    <li>Sistema de sonido e iluminación de alta gama</li>
+                </ul>
+                <div class="mt-4">
+                    <a href="{% url 'galeria' %}" class="eb-btn-primary">Ver galería de espacios</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     TESTIMONIOS
+═══════════════════════════════════════ -->
+<section class="eb-testimonials section-padding text-center">
+    <div class="container">
+        <p class="eb-section-subtitle">Lo que dicen nuestros novios</p>
+        <h2 class="eb-section-title">Historias que nos inspiran</h2>
+        <div class="eb-ornament">
+            <div class="eb-ornament-diamond"></div>
+        </div>
+
+        <div class="row gy-4 mt-3 justify-content-center">
+
+            <div class="col-md-4">
+                <div class="eb-testimonial-card">
+                    <div class="eb-quote-icon">"</div>
+                    <p class="eb-testimonial-text">
+                        El día de nuestro casamiento fue absolutamente perfecto. Cada detalle
+                        superó nuestras expectativas. El equipo de Eventos Belgrano es
+                        simplemente extraordinario.
+                    </p>
+                    <div class="eb-testimonial-author">
+                        <span class="eb-t-name">Valentina &amp; Martín</span>
+                        <span class="eb-t-date">Marzo 2025</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="eb-testimonial-card">
+                    <div class="eb-quote-icon">"</div>
+                    <p class="eb-testimonial-text">
+                        La ambientación, la comida y el servicio fueron de otro nivel.
+                        Nuestros invitados todavía nos preguntan cómo lo logramos. La
+                        respuesta siempre es la misma: Eventos Belgrano.
+                    </p>
+                    <div class="eb-testimonial-author">
+                        <span class="eb-t-name">Florencia &amp; Diego</span>
+                        <span class="eb-t-date">Noviembre 2024</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="eb-testimonial-card">
+                    <div class="eb-quote-icon">"</div>
+                    <p class="eb-testimonial-text">
+                        Soñamos con una boda íntima pero majestuosa, y lo que vivimos
+                        fue exactamente eso. La atención personalizada desde la primera
+                        reunión marcó la diferencia.
+                    </p>
+                    <div class="eb-testimonial-author">
+                        <span class="eb-t-name">Lucía &amp; Sebastián</span>
+                        <span class="eb-t-date">Agosto 2024</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     API EXTERNA — IDEA PARA TU BARRA DE TRAGOS
+═══════════════════════════════════════ -->
+<section class="eb-api-cocktail py-5">
+    <div class="container bg-light rounded text-center shadow-sm p-5">
+        <h3 class="text-primary fw-bold mb-2">
+            <i class="bi bi-cup-straw text-secondary"></i> Idea para tu Barra de Tragos
+        </h3>
+        <p class="text-muted mb-4">Descubre opciones increíbles para sorprender a los invitados en tu evento.</p>
+        
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-8 d-flex flex-column flex-md-row align-items-center justify-content-center gap-4">
+                
+                <div id="api-loading" class="spinner-border text-primary" role="status"></div>
+                
+                <img id="api-cocktail-img" src="" alt="Cóctel sugerido" class="img-fluid rounded shadow-sm" style="display: none; max-width: 150px; border: 3px solid white;">
+                
+                <div class="text-md-start">
+                    <h4 id="api-cocktail-name" class="fw-bold text-dark mb-1"></h4>
+                    <p id="api-cocktail-desc" class="fst-italic text-secondary mb-0"></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CTA — LLAMADO A LA ACCIÓN
+═══════════════════════════════════════ -->
+<section class="eb-cta">
+    <div class="eb-cta-overlay"></div>
+    <div class="container text-center eb-cta-content">
+        <p class="eb-section-subtitle" style="color: var(--eb-gold);">Su fecha especial nos espera</p>
+        <h2 class="eb-cta-title">¿Listos para comenzar a planear su evento?</h2>
+        <p class="eb-cta-body">
+            Contáctenos hoy y un asesor exclusivo los acompañará en cada paso del proceso.
+        </p>
+        <a href="{% url 'contacto' %}" class="eb-btn-primary">Reservar mi fecha</a>
+    </div>
+</section>
+
+{% endblock %}
+
+
+{% block extra_js %}
+    <!-- JavaScript específico para la página de inicio -->
+    <script src="{% static 'eventos/js/inicio.js' %}"></script>
+{% endblock %}

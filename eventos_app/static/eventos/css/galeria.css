@@ -1,0 +1,327 @@
+/* ═══════════════════════════════════════════════════════════
+   EVENTOS BELGRANO — CSS ESPECÍFICO: GALERÍA
+   ═══════════════════════════════════════════════════════════ */
+
+.section-padding { padding: 5rem 0; }
+
+/* ─── HEADER ────────────────────────────────────────────── */
+.eb-galeria-header {
+    position: relative;
+    padding: calc(var(--eb-navbar-height) + 6rem) 0 5rem;
+    background: linear-gradient(135deg, #1a1510 0%, #2c2218 60%, #1a1510 100%);
+    overflow: hidden;
+}
+
+.eb-galeria-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(ellipse at 25% 60%, rgba(212,175,55,0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 30%, rgba(212,175,55,0.07) 0%, transparent 45%);
+    pointer-events: none;
+}
+
+.eb-gal-overlay { display: none; }
+
+.eb-gal-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* ─── FILTROS ───────────────────────────────────────────── */
+.eb-filtros {
+    background: var(--eb-cream);
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--eb-gray);
+    position: sticky;
+    top: var(--eb-navbar-height);
+    z-index: 100;
+}
+
+.eb-filtros-inner {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.eb-filtro-btn {
+    font-family: var(--eb-font-serif);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--eb-gray-dark);
+    background: transparent;
+    border: 1px solid var(--eb-gray);
+    padding: 0.55rem 1.5rem;
+    cursor: pointer;
+    transition: all var(--eb-transition);
+}
+
+.eb-filtro-btn:hover {
+    border-color: var(--eb-gold);
+    color: var(--eb-gold);
+}
+
+.eb-filtro-btn.active {
+    background: var(--eb-gold);
+    border-color: var(--eb-gold);
+    color: var(--eb-charcoal);
+}
+
+/* ─── GRILLA ────────────────────────────────────────────── */
+.eb-galeria-grid {
+    background: var(--eb-cream-dark);
+}
+
+.eb-gal-item {
+    transition: opacity 0.35s ease;
+}
+
+.eb-gal-card {
+    cursor: pointer;
+    overflow: hidden;
+    background: var(--eb-white);
+    border: 1px solid var(--eb-gray);
+    transition: box-shadow var(--eb-transition), transform var(--eb-transition);
+}
+
+.eb-gal-card:hover {
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    transform: translateY(-3px);
+}
+
+.eb-gal-img-wrap {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: var(--eb-cream-dark);
+}
+
+.eb-gal-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.55s ease;
+}
+
+.eb-gal-card:hover .eb-gal-img {
+    transform: scale(1.08);
+}
+
+/* Placeholder cuando falla la imagen */
+.eb-gal-placeholder {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--eb-gold);
+    opacity: 0.4;
+    background: linear-gradient(135deg, var(--eb-cream-dark) 0%, var(--eb-gray) 100%);
+}
+
+.eb-gal-placeholder::after {
+    content: '✦';
+}
+
+/* Hover overlay */
+.eb-gal-hover {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,21,16,0.85) 0%, rgba(26,21,16,0.2) 100%);
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity var(--eb-transition);
+}
+
+.eb-gal-card:hover .eb-gal-hover {
+    opacity: 1;
+}
+
+.eb-gal-hover-content {
+    text-align: center;
+    color: var(--eb-white);
+}
+
+.eb-gal-hover-content i {
+    font-size: 1.8rem;
+    color: var(--eb-gold);
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+.eb-gal-hover-content p {
+    font-family: var(--eb-font-serif);
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    margin: 0;
+    color: rgba(255,255,255,0.85);
+}
+
+/* Caption */
+.eb-gal-caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem 1rem;
+    border-top: 1px solid var(--eb-gray);
+}
+
+.eb-gal-titulo {
+    font-family: var(--eb-font-serif);
+    font-size: 0.85rem;
+    color: var(--eb-charcoal);
+}
+
+.eb-gal-cat {
+    font-family: var(--eb-font-serif);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--eb-gold);
+}
+
+/* ─── LIGHTBOX ──────────────────────────────────────────── */
+.eb-lightbox-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(10,8,6,0.92);
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.eb-lightbox-backdrop.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.eb-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 2001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.eb-lightbox.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.eb-lb-inner {
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+}
+
+.eb-lb-img-wrap {
+    position: relative;
+    background: var(--eb-charcoal);
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.eb-lb-img {
+    max-width: 100%;
+    max-height: 75vh;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.eb-lb-placeholder {
+    font-size: 4rem;
+    color: var(--eb-gold);
+    opacity: 0.3;
+    display: none;
+    width: 100%;
+    min-height: 300px;
+    align-items: center;
+    justify-content: center;
+}
+
+.eb-lb-caption {
+    font-family: var(--eb-font-serif);
+    font-style: italic;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    letter-spacing: 0.05em;
+}
+
+.eb-lb-close {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: var(--eb-white);
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--eb-transition);
+    z-index: 2002;
+    line-height: 1;
+}
+
+.eb-lb-close:hover {
+    background: var(--eb-gold);
+    border-color: var(--eb-gold);
+    color: var(--eb-charcoal);
+}
+
+.eb-lb-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: var(--eb-white);
+    font-size: 1.3rem;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--eb-transition);
+    z-index: 2002;
+}
+
+.eb-lb-nav:hover {
+    background: var(--eb-gold);
+    border-color: var(--eb-gold);
+    color: var(--eb-charcoal);
+}
+
+.eb-lb-prev { left: 1.5rem; }
+.eb-lb-next { right: 1.5rem; }
+
+/* ─── CTA BOTTOM ────────────────────────────────────────── */
+.eb-galeria-cta {
+    background: var(--eb-cream);
+    text-align: center;
+}
+
+/* ─── RESPONSIVE ────────────────────────────────────────── */
+@media (max-width: 575px) {
+    .eb-lb-nav { display: none; }
+    .eb-lightbox { padding: 1rem; }
+}

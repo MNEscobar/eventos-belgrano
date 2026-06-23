@@ -1,0 +1,281 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contacto & Reservas — Eventos Belgrano{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'eventos/css/contacto.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- ═══════════════════════════════════════
+     HEADER DE PÁGINA
+═══════════════════════════════════════ -->
+<section class="eb-contacto-header text-center">
+    <div class="container">
+        <p class="eb-section-subtitle animate-fade-up">Estamos aquí para ayudarle</p>
+        <h1 class="eb-section-title animate-fade-up-delay-1" style="color: var(--eb-white);">Contacto &amp; Reservas</h1>
+        <div class="eb-ornament animate-fade-up-delay-2">
+            <div class="eb-ornament-diamond"></div>
+        </div>
+        <p class="eb-section-body animate-fade-up-delay-2" style="color: var(--eb-white);">
+            Complete el formulario y un asesor exclusivo se pondrá en contacto
+            con usted dentro de las 24 horas hábiles.
+        </p>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECCIÓN PRINCIPAL: FORMULARIO + INFO
+═══════════════════════════════════════ -->
+<section class="eb-contacto-main section-padding">
+    <div class="container">
+        <div class="row gy-5 align-items-start">
+
+            <!-- ── COLUMNA INFO ─────────────────────────── -->
+            <div class="col-lg-4">
+                <div class="eb-info-block">
+                    <h2 class="eb-info-title">Información de contacto</h2>
+                    <div class="eb-divider" style="margin: 1rem 0;"></div>
+
+                    <div class="eb-info-item">
+                        <i class="bi bi-geo-alt eb-info-icon"></i>
+                        <div>
+                            <span class="eb-info-label">Dirección</span>
+                            <span class="eb-info-value">Av. del Libertador 4200<br>Belgrano, CABA</span>
+                        </div>
+                    </div>
+
+                    <div class="eb-info-item">
+                        <i class="bi bi-telephone eb-info-icon"></i>
+                        <div>
+                            <span class="eb-info-label">Teléfono</span>
+                            <span class="eb-info-value">+54 11 4000-5000</span>
+                        </div>
+                    </div>
+
+                    <div class="eb-info-item">
+                        <i class="bi bi-envelope eb-info-icon"></i>
+                        <div>
+                            <span class="eb-info-label">Email</span>
+                            <span class="eb-info-value">info@eventosbel​grano.com.ar</span>
+                        </div>
+                    </div>
+
+                    <div class="eb-info-item">
+                        <i class="bi bi-clock eb-info-icon"></i>
+                        <div>
+                            <span class="eb-info-label">Horario de atención</span>
+                            <span class="eb-info-value">Lunes a Viernes: 9 a 19 hs<br>Sábados: 10 a 14 hs</span>
+                        </div>
+                    </div>
+
+                    <div class="eb-info-social mt-4">
+                        <p class="eb-info-label mb-2">Síguenos</p>
+                        <div class="d-flex gap-3">
+                            <a href="#" class="eb-social-link" aria-label="Instagram">
+                                <i class="bi bi-instagram"></i>
+                            </a>
+                            <a href="#" class="eb-social-link" aria-label="Facebook">
+                                <i class="bi bi-facebook"></i>
+                            </a>
+                            <a href="#" class="eb-social-link" aria-label="Pinterest">
+                                <i class="bi bi-pinterest"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frase decorativa -->
+                <div class="eb-info-quote mt-4">
+                    <span class="eb-info-quote-mark">"</span>
+                    <p>Cada gran evento comienza con una simple consulta.</p>
+                </div>
+            </div>
+
+
+            <!-- ── COLUMNA FORMULARIO ────────────────────── -->
+            <div class="col-lg-7 offset-lg-1">
+                <div class="eb-form-wrapper">
+                    <div class="eb-form-header">
+                        <h2 class="eb-form-title">Solicitar consulta o reserva</h2>
+                        <p class="eb-form-subtitle">
+                            Complete el formulario con los datos de su evento y nos comunicaremos a la brevedad.
+                        </p>
+                    </div>
+
+                    <form method="POST" action="{% url 'contacto' %}" class="eb-form" novalidate>
+                        {% csrf_token %}
+
+                        <!-- Fila 1: Nombre + Email -->
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="eb-label" for="{{ form.nombre.id_for_label }}">
+                                    {{ form.nombre.label }}
+                                    <span class="eb-required">*</span>
+                                </label>
+                                {{ form.nombre }}
+                                {% if form.nombre.errors %}
+                                <div class="eb-field-error">
+                                    {% for error in form.nombre.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6">
+                                <label class="eb-label" for="{{ form.email.id_for_label }}">
+                                    {{ form.email.label }}
+                                    <span class="eb-required">*</span>
+                                </label>
+                                {{ form.email }}
+                                {% if form.email.errors %}
+                                <div class="eb-field-error">
+                                    {% for error in form.email.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <!-- Fila 2: Teléfono + Tipo de evento -->
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="eb-label" for="{{ form.telefono.id_for_label }}">
+                                    {{ form.telefono.label }}
+                                    <span class="eb-required">*</span>
+                                </label>
+                                {{ form.telefono }}
+                                {% if form.telefono.errors %}
+                                <div class="eb-field-error">
+                                    {% for error in form.telefono.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6">
+                                <label class="eb-label" for="{{ form.tipo_evento.id_for_label }}">
+                                    {{ form.tipo_evento.label }}
+                                    <span class="eb-required">*</span>
+                                </label>
+                                {{ form.tipo_evento }}
+                                {% if form.tipo_evento.errors %}
+                                <div class="eb-field-error">
+                                    {% for error in form.tipo_evento.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <!-- Fila 3: Fecha + Cantidad invitados -->
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="eb-label" for="{{ form.fecha_evento.id_for_label }}">
+                                    {{ form.fecha_evento.label }}
+                                    <span class="eb-required">*</span>
+                                </label>
+                                {{ form.fecha_evento }}
+                                {% if form.fecha_evento.errors %}
+                                <div class="eb-field-error">
+                                    {% for error in form.fecha_evento.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6">
+                                <label class="eb-label" for="{{ form.cantidad_invitados.id_for_label }}">
+                                    {{ form.cantidad_invitados.label }}
+                                    <span class="eb-required">*</span>
+                                </label>
+                                {{ form.cantidad_invitados }}
+                                {% if form.cantidad_invitados.errors %}
+                                <div class="eb-field-error">
+                                    {% for error in form.cantidad_invitados.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <!-- Mensaje -->
+                        <div class="mb-4">
+                            <label class="eb-label" for="{{ form.mensaje.id_for_label }}">
+                                {{ form.mensaje.label }}
+                                <span class="eb-required">*</span>
+                            </label>
+                            {{ form.mensaje }}
+                            {% if form.mensaje.errors %}
+                            <div class="eb-field-error">
+                                {% for error in form.mensaje.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Nota de privacidad -->
+                        <p class="eb-privacy-note">
+                            <i class="bi bi-shield-lock me-1"></i>
+                            Sus datos son confidenciales y no serán compartidos con terceros.
+                        </p>
+
+                        <!-- Botón enviar -->
+                        <button type="submit" class="eb-btn-submit">
+                            <i class="bi bi-send me-2"></i>
+                            Enviar consulta
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     MAPA (placeholder estático elegante)
+═══════════════════════════════════════ -->
+<section class="eb-mapa">
+    <div class="eb-mapa-inner">
+        <div class="eb-mapa-placeholder">
+            <i class="bi bi-map eb-mapa-icon"></i>
+            <p class="eb-mapa-texto">Belgrano, Ciudad Autónoma de Buenos Aires</p>
+            <p class="eb-mapa-sub">Av. del Libertador 4200</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     API EXTERNA — CLIMA EN BELGRANO
+═══════════════════════════════════════ -->
+{% if clima %}
+<section class="eb-clima py-5 bg-light border-top border-bottom text-center">
+    <div class="container">
+        <h3 class="mb-3 fs-4 eb-clima-title">
+            <i id="eb-clima-icon" class="bi bi-cloud-sun eb-clima-icon"></i>
+            El clima en nuestros jardines
+        </h3>
+        <p class="text-muted mb-0 fs-5">
+            Temperatura actual en Belgrano: 
+            <strong id="eb-clima-value" class="eb-clima-value" data-temp="{{ clima.temperatura|stringformat:'s' }}">
+                {{ clima.temperatura }}°C
+            </strong>
+        </p>
+    </div>
+</section>
+{% endif %}
+
+{% endblock %}
+
+{% block extra_js %}
+    <!-- JavaScript específico para la página de contacto -->
+    <script src="{% static 'eventos/js/contacto.js' %}"></script>
+{% endblock %}

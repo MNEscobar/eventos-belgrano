@@ -1,0 +1,276 @@
+/* ═══════════════════════════════════════════════════════════
+   EVENTOS BELGRANO — CSS ESPECÍFICO: SERVICIOS
+   ═══════════════════════════════════════════════════════════ */
+
+.section-padding { padding: 7rem 0; }
+
+/* ─── HEADER ────────────────────────────────────────────── */
+.eb-servicios-header {
+    padding: calc(var(--eb-navbar-height) + 6rem) 0 5rem;
+    background: linear-gradient(135deg, #1a1510 0%, #2c2218 60%, #1a1510 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.eb-servicios-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(ellipse at 80% 50%, rgba(212,175,55,0.07) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.eb-ph-overlay { display: none; }
+
+.eb-ph-content { position: relative; z-index: 1; }
+
+/* ─── GRILLA DE SERVICIOS ───────────────────────────────── */
+.eb-servicios-grid {
+    background: var(--eb-cream);
+}
+
+.eb-servicio-card {
+    background: var(--eb-white);
+    border: 1px solid var(--eb-gray);
+    padding: 2.8rem 2rem;
+    height: 100%;
+    transition: transform var(--eb-transition), box-shadow var(--eb-transition), border-color var(--eb-transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.eb-servicio-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--eb-gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--eb-transition);
+}
+
+.eb-servicio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--eb-shadow);
+    border-color: var(--eb-gold-light);
+}
+
+.eb-servicio-card:hover::before {
+    transform: scaleX(1);
+}
+
+.eb-servicio-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.2rem;
+    display: block;
+}
+
+.eb-servicio-title {
+    font-family: var(--eb-font-serif);
+    font-size: 1.1rem;
+    color: var(--eb-charcoal);
+    margin-bottom: 0;
+}
+
+.eb-servicio-desc {
+    font-family: var(--eb-font-serif);
+    font-size: 0.9rem;
+    color: var(--eb-gray-dark);
+    line-height: 1.85;
+    margin: 0;
+}
+
+/* ─── PROCESO ───────────────────────────────────────────── */
+.eb-proceso {
+    background: var(--eb-cream-dark);
+}
+
+.eb-paso {
+    padding: 1.5rem;
+    position: relative;
+}
+
+.eb-paso-num {
+    font-family: var(--eb-font-script);
+    font-size: 4rem;
+    color: var(--eb-gold);
+    opacity: 0.3;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.eb-paso-title {
+    font-family: var(--eb-font-serif);
+    font-size: 1rem;
+    color: var(--eb-charcoal);
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.05em;
+}
+
+.eb-paso-desc {
+    font-family: var(--eb-font-serif);
+    font-size: 0.88rem;
+    color: var(--eb-gray-dark);
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* ─── PAQUETES ──────────────────────────────────────────── */
+.eb-paquetes {
+    background: var(--eb-cream);
+}
+
+.eb-paquete-card {
+    border: 1px solid var(--eb-gray);
+    padding: 3rem 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--eb-white);
+    position: relative;
+    cursor: pointer; /* Indica al usuario que puede hacer clic */
+    /* Agregamos colores a la transición para un fundido suave al hacer clic */
+    transition: transform var(--eb-transition), box-shadow var(--eb-transition), background-color var(--eb-transition), border-color var(--eb-transition);
+}
+
+.eb-paquete-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--eb-shadow);
+}
+
+.eb-paquete-featured {
+    background: var(--eb-charcoal);
+    border-color: var(--eb-gold);
+    transform: scale(1.02);
+}
+
+.eb-paquete-featured:hover {
+    transform: scale(1.02) translateY(-4px);
+}
+
+.eb-pk-badge {
+    display: none; /* Oculto por defecto */
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--eb-gold);
+    color: var(--eb-charcoal);
+    font-family: var(--eb-font-serif);
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 0.3rem 1.2rem;
+}
+
+/* Solo se muestra cuando la tarjeta está seleccionada/destacada */
+.eb-paquete-featured .eb-pk-badge {
+    display: block;
+}
+
+.eb-pk-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(207,207,207,0.4);
+    transition: border-color var(--eb-transition);
+}
+
+.eb-paquete-featured .eb-pk-header {
+    border-bottom-color: rgba(212,175,55,0.3);
+}
+
+.eb-pk-eyebrow {
+    font-family: var(--eb-font-serif);
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--eb-gray-dark);
+    margin-bottom: 0.4rem;
+    transition: color var(--eb-transition);
+}
+
+/* El subtítulo se vuelve dorado al seleccionar */
+.eb-paquete-featured .eb-pk-eyebrow {
+    color: var(--eb-gold);
+}
+
+.eb-pk-title {
+    font-family: var(--eb-font-script);
+    font-size: 2.2rem;
+    color: var(--eb-charcoal);
+    margin: 0;
+    transition: color var(--eb-transition);
+}
+
+.eb-paquete-featured .eb-pk-title {
+    color: var(--eb-gold);
+}
+
+.eb-pk-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+    flex: 1;
+}
+
+.eb-pk-features li {
+    font-family: var(--eb-font-serif);
+    font-size: 0.9rem;
+    color: var(--eb-gray-dark);
+    padding: 0.6rem 0 0.6rem 1.4rem;
+    border-bottom: 1px solid rgba(207,207,207,0.25);
+    position: relative;
+    transition: color var(--eb-transition), border-color var(--eb-transition);
+}
+
+.eb-paquete-featured .eb-pk-features li {
+    color: rgba(255,255,255,0.7);
+    border-bottom-color: rgba(255,255,255,0.08);
+}
+
+.eb-pk-features li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--eb-gold);
+    font-size: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.eb-pk-footer {
+    text-align: center;
+    margin-top: auto;
+}
+
+/* ─── CTA BOTTOM ────────────────────────────────────────── */
+.eb-servicios-cta {
+    background: linear-gradient(135deg, #1a1510 0%, #2c2218 100%);
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.eb-servicios-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(ellipse at 50% 50%, rgba(212,175,55,0.1) 0%, transparent 65%);
+    pointer-events: none;
+}
+
+.eb-servicios-cta .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* ─── RESPONSIVE ────────────────────────────────────────── */
+@media (max-width: 767px) {
+    .section-padding { padding: 5rem 0; }
+    .eb-paquete-featured { transform: none; }
+    .eb-paquete-featured:hover { transform: translateY(-4px); }
+}

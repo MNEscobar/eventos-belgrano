@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+
+# Entornos Virtuales
+.venv/
+venv/
+
+# Variables de Entorno
+.env
+
+# Archivos de la base de datos local SQLite
+*.sqlite3
+db.sqlite3
+
+# Archivos compilados de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Archivos estáticos recolectados
+staticfiles/

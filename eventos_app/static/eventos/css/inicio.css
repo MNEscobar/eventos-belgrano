@@ -1,0 +1,434 @@
+/* ═══════════════════════════════════════════════════════════
+   EVENTOS BELGRANO — CSS ESPECÍFICO: INICIO
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── SECCIÓN HERO ──────────────────────────────────────── */
+.eb-hero {
+    position: relative;
+    height: 100vh;
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1a1510 0%, #2c2218 40%, #1a1510 100%);
+}
+
+/* ─── imagen portada ─── */
+.eb-hero-sparkler {
+    position: absolute;
+    aspect-ratio: 2/3;
+    top: 0;
+    right: 0; 
+    width: 60%; 
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.55;
+    z-index: 0; 
+    
+    /* efecto de fundido */
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 50%);
+    mask-image: linear-gradient(to right, transparent 0%, black 50%);
+}
+
+/* Patrón decorativo de fondo */
+.eb-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(ellipse at 30% 60%, rgba(212,175,55,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 75% 30%, rgba(212,175,55,0.07) 0%, transparent 45%);
+    pointer-events: none;
+}
+
+.eb-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(26,21,16,0.3) 0%,
+        rgba(26,21,16,0.15) 40%,
+        rgba(26,21,16,0.55) 100%
+    );
+    z-index: 1;
+}
+
+.eb-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 1.5rem;
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+.eb-hero-eyebrow {
+    font-family: var(--eb-font-serif);
+    font-size: 0.72rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--eb-gold);
+    margin-bottom: 2rem;
+}
+
+.eb-hero-title {
+    font-family: var(--eb-font-script);
+    font-size: clamp(4rem, 10vw, 7.5rem);
+    color: var(--eb-white);
+    line-height: 1;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.eb-hero-title em {
+    color: var(--eb-gold-light);
+    font-style: normal;
+    display: block;
+    font-size: 1.15em;
+}
+
+.eb-hero-subtitle {
+    font-family: var(--eb-font-serif);
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: rgba(255,255,255,0.78);
+    margin-bottom: 3.5rem;
+    line-height: 1.7;
+}
+
+.eb-hero-actions {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Scroll indicator animado */
+.eb-scroll-indicator {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.eb-scroll-indicator span {
+    display: block;
+    width: 1px;
+    background: var(--eb-gold);
+    animation: scrollDrop 1.6s ease-in-out infinite;
+}
+
+.eb-scroll-indicator span:nth-child(1) { height: 10px; animation-delay: 0s; }
+.eb-scroll-indicator span:nth-child(2) { height: 14px; animation-delay: 0.18s; }
+.eb-scroll-indicator span:nth-child(3) { height: 10px; animation-delay: 0.36s; }
+
+@keyframes scrollDrop {
+    0%, 100% { opacity: 0.2; transform: scaleY(0.6); }
+    50%       { opacity: 1;   transform: scaleY(1); }
+}
+
+.eb-hero {
+    justify-content: flex-start;
+    padding-left: clamp(1.5rem, 5vw, 4rem);
+}
+
+.eb-hero-content {
+    text-align: left;
+    padding: 0;
+    margin: 0;
+}
+
+@media (max-width: 991px) {
+    .eb-hero {
+        justify-content: center;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .eb-hero-content {
+        text-align: center;
+    }
+}
+
+/* ─── SECTION PADDING ───────────────────────────────────── */
+.section-padding {
+    padding: 10rem 0;
+}
+
+/* ─── SECCIÓN INTRO ─────────────────────────────────────── */
+.eb-intro {
+    background: var(--eb-cream);
+}
+
+/* ─── SECCIÓN ESTADÍSTICAS ──────────────────────────────── */
+.eb-stats {
+    background: var(--eb-charcoal);
+    padding: 4rem 0;
+}
+
+.eb-stat-item {
+    padding: 3.5rem 1.5rem;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+}
+
+.eb-stat-item:last-child {
+    border-right: none;
+}
+
+.eb-stat-num {
+    display: block;
+    font-family: var(--eb-font-script);
+    font-size: clamp(2.8rem, 5vw, 4rem);
+    color: var(--eb-gold);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+}
+
+.eb-stat-label {
+    display: block;
+    font-family: var(--eb-font-serif);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--eb-gray-dark);
+}
+
+/* ─── SECCIÓN FEATURED ──────────────────────────────────── */
+.eb-featured {
+    background: var(--eb-cream-dark);
+}
+
+.eb-img-stacked-item {
+    width: 100%;
+    aspect-ratio: 16/9; 
+    background: var(--eb-gray);
+    overflow: hidden;
+    position: relative;
+    border-radius: var(--eb-radius); 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+}
+
+.eb-img-stacked-item:hover .eb-img-cover {
+    transform: scale(1.04);
+}
+
+.eb-img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    transition: transform 0.6s ease;
+}
+
+.eb-img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.eb-img-placeholder {
+    background: linear-gradient(135deg, var(--eb-cream-dark) 0%, var(--eb-gray) 100%);
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.eb-img-placeholder::after {
+    content: '✦';
+    font-size: 2rem;
+    color: var(--eb-gold);
+    opacity: 0.4;
+}
+
+/* Lista con checkmarks dorados */
+.eb-check-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.eb-check-list li {
+    font-family: var(--eb-font-serif);
+    font-size: 0.92rem;
+    color: var(--eb-gray-dark);
+    padding: 0.45rem 0;
+    padding-left: 1.6rem;
+    position: relative;
+    border-bottom: 1px solid rgba(207,207,207,0.35);
+}
+
+.eb-check-list li:last-child {
+    border-bottom: none;
+}
+
+.eb-check-list li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--eb-gold);
+    font-size: 0.55rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* ─── TESTIMONIOS ───────────────────────────────────────── */
+.eb-testimonials {
+    background: var(--eb-cream);
+}
+
+.eb-testimonial-card {
+    background: var(--eb-white);
+    border: 1px solid var(--eb-gray);
+    padding: 3.5rem 2.5rem;
+    text-align: left;
+    position: relative;
+    transition: transform var(--eb-transition), box-shadow var(--eb-transition);
+}
+
+.eb-testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--eb-shadow);
+}
+
+.eb-quote-icon {
+    font-family: Georgia, serif;
+    font-size: 4rem;
+    color: var(--eb-gold);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    opacity: 0.6;
+}
+
+.eb-testimonial-text {
+    font-family: var(--eb-font-serif);
+    font-style: italic;
+    font-size: 0.92rem;
+    color: var(--eb-gray-dark);
+    line-height: 1.85;
+    margin-bottom: 2rem;
+}
+
+.eb-testimonial-author {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--eb-gray);
+    padding-top: 1rem;
+}
+
+.eb-t-name {
+    font-family: var(--eb-font-serif);
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--eb-charcoal);
+}
+
+.eb-t-date {
+    font-family: var(--eb-font-serif);
+    font-size: 0.78rem;
+    color: var(--eb-gold);
+    letter-spacing: 0.1em;
+}
+
+/* ─── CTA FINAL ─────────────────────────────────────────── */
+.eb-cta {
+    position: relative;
+    padding: 10rem 0;
+    background: linear-gradient(135deg, #1a1510 0%, #2c2218 100%);
+    overflow: hidden;
+    text-align: center;
+}
+
+.eb-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(212,175,55,0.1) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 50%, rgba(212,175,55,0.08) 0%, transparent 45%);
+    pointer-events: none;
+}
+
+.eb-cta-overlay {
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: repeating-linear-gradient(
+        45deg,
+        var(--eb-gold) 0px,
+        var(--eb-gold) 1px,
+        transparent 1px,
+        transparent 12px
+    );
+}
+
+.eb-cta-content {
+    position: relative;
+    z-index: 1;
+}
+
+.eb-cta-title {
+    font-family: var(--eb-font-script);
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    color: var(--eb-white);
+    line-height: 1.2;
+    margin-bottom: 1.8rem;
+}
+
+.eb-cta-body {
+    font-family: var(--eb-font-serif);
+    font-style: italic;
+    color: rgba(255,255,255,0.65);
+    font-size: 1rem;
+    margin-bottom: 3.5rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ─── RESPONSIVE ────────────────────────────────────────── */
+@media (max-width: 767px) {
+    .section-padding {
+        padding: 5rem 0;
+    }
+
+    .eb-hero-sparkler {
+        width: 100%;
+        opacity: 0.2; 
+        -webkit-mask-image: linear-gradient(to top, transparent 0%, black 100%);
+        mask-image: linear-gradient(to top, transparent 0%, black 100%);
+    }
+    
+    .container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .eb-section-body, .eb-cta-body {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .eb-img-stack {
+        padding-right: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+    
+    .eb-stat-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        padding: 1.8rem 1rem;
+    }
+    
+    .eb-stat-item:last-child {
+        border-bottom: none;
+    }
+}

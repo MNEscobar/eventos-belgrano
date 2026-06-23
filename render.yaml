@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: eventos-belgrano
+    env: python
+    buildCommand: "pip install -r requirements.txt && python manage.py migrate && python manage.py collectstatic --noinput"
+    startCommand: "gunicorn eventos_belgrano.wsgi:application"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: eventos_belgrano.settings
+      - key: DATABASE_URL
+        value: especificarExternalUrlAsignadaPorRender
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"

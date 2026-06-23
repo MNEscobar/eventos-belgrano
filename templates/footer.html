@@ -1,0 +1,58 @@
+{% load static %}
+<!-- ═══════════════════════════════════════
+         FOOTER
+═══════════════════════════════════════ -->
+<footer class="eb-footer">
+    <div class="container">
+        <div class="row gy-4 justify-content-between align-items-start">
+
+            <!-- Columna: Marca -->
+            <div class="col-md-4">
+                <div class="eb-footer-brand">
+                    <span class="eb-brand-script">Eventos</span>
+                    <span class="eb-brand-serif">BELGRANO</span>
+                </div>
+                <p class="eb-footer-tagline mt-2">
+                    Donde los sueños se convierten<br>en recuerdos eternos.
+                </p>
+            </div>
+
+            <!-- Columna: Navegación -->
+            <div class="col-md-3">
+                <h6 class="eb-footer-heading">Navegación</h6>
+                <ul class="eb-footer-links list-unstyled">
+                    <li><a href="{% url 'inicio' %}">Inicio</a></li>
+                    <li><a href="{% url 'servicios' %}">Servicios</a></li>
+                    <li><a href="{% url 'galeria' %}">Galería</a></li>
+                    <li><a href="{% url 'contacto' %}">Contacto</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna: Contacto -->
+            <div class="col-md-4">
+                <h6 class="eb-footer-heading">Contáctenos</h6>
+                <ul class="eb-footer-links list-unstyled">
+                    <li><i class="bi bi-geo-alt me-2"></i>Belgrano, Ciudad de Buenos Aires</li>
+                    <li><i class="bi bi-telephone me-2"></i>+54 11 4000-5000</li>
+                    <li><i class="bi bi-envelope me-2"></i>info@eventosbel​grano.com.ar</li>
+                </ul>
+                <div class="eb-social mt-3">
+                    <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+        <hr class="eb-footer-divider mt-4">
+
+        <div class="row">
+            <div class="col text-center">
+                <p class="eb-footer-copy">
+                    &copy; 2026 Eventos Belgrano &mdash; Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>

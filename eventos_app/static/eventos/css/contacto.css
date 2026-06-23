@@ -1,0 +1,331 @@
+/* ═══════════════════════════════════════════════════════════
+   EVENTOS BELGRANO — CSS ESPECÍFICO: CONTACTO
+   ═══════════════════════════════════════════════════════════ */
+
+.section-padding { padding: 6rem 0; }
+
+/* ─── HEADER ────────────────────────────────────────────── */
+.eb-contacto-header {
+    padding: calc(var(--eb-navbar-height) + 5rem) 0 4.5rem;
+    background: linear-gradient(135deg, #1a1510 0%, #2c2218 60%, #1a1510 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.eb-contacto-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(ellipse at 70% 50%, rgba(212,175,55,0.07) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+/* ─── MAIN ──────────────────────────────────────────────── */
+.eb-contacto-main {
+    background: var(--eb-cream);
+}
+
+/* ─── BLOQUE DE INFORMACIÓN ─────────────────────────────── */
+.eb-info-block {
+    background: var(--eb-white);
+    border: 1px solid var(--eb-gray);
+    padding: 2.5rem;
+    position: sticky;
+    top: calc(var(--eb-navbar-height) + 2rem);
+}
+
+.eb-info-title {
+    font-family: var(--eb-font-script);
+    font-size: 2rem;
+    color: var(--eb-charcoal);
+    margin-bottom: 0;
+}
+
+.eb-info-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(207,207,207,0.4);
+}
+
+.eb-info-item:last-of-type {
+    border-bottom: none;
+}
+
+.eb-info-icon {
+    font-size: 1.1rem;
+    color: var(--eb-gold);
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.eb-info-label {
+    display: block;
+    font-family: var(--eb-font-serif);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--eb-gold);
+    margin-bottom: 0.2rem;
+}
+
+.eb-info-value {
+    display: block;
+    font-family: var(--eb-font-serif);
+    font-size: 0.9rem;
+    color: var(--eb-charcoal);
+    line-height: 1.6;
+}
+
+.eb-social-link {
+    color: var(--eb-gray-dark);
+    font-size: 1.1rem;
+    transition: color var(--eb-transition), transform var(--eb-transition);
+    display: inline-block;
+}
+
+.eb-social-link:hover {
+    color: var(--eb-gold);
+    transform: translateY(-2px);
+}
+
+.eb-info-quote {
+    background: var(--eb-cream-dark);
+    border-left: 2px solid var(--eb-gold);
+    padding: 1.2rem 1.5rem;
+    position: relative;
+}
+
+.eb-info-quote-mark {
+    font-family: Georgia, serif;
+    font-size: 3rem;
+    color: var(--eb-gold);
+    opacity: 0.4;
+    line-height: 1;
+    position: absolute;
+    top: 0.2rem;
+    left: 1rem;
+}
+
+.eb-info-quote p {
+    font-family: var(--eb-font-serif);
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--eb-gray-dark);
+    margin: 0;
+    padding-left: 1.5rem;
+    line-height: 1.7;
+}
+
+/* ─── FORMULARIO ────────────────────────────────────────── */
+.eb-form-wrapper {
+    background: var(--eb-white);
+    border: 1px solid var(--eb-gray);
+    padding: 3rem;
+}
+
+.eb-form-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--eb-gray);
+}
+
+.eb-form-title {
+    font-family: var(--eb-font-script);
+    font-size: 2.2rem;
+    color: var(--eb-charcoal);
+    margin-bottom: 0.5rem;
+}
+
+.eb-form-subtitle {
+    font-family: var(--eb-font-serif);
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--eb-gray-dark);
+    margin: 0;
+    line-height: 1.7;
+}
+
+/* Labels */
+.eb-label {
+    display: block;
+    font-family: var(--eb-font-serif);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--eb-charcoal);
+    margin-bottom: 0.5rem;
+}
+
+.eb-required {
+    color: var(--eb-gold);
+    margin-left: 2px;
+}
+
+/* Inputs generales */
+.eb-input {
+    font-family: var(--eb-font-serif) !important;
+    font-size: 0.9rem !important;
+    color: var(--eb-charcoal) !important;
+    background: var(--eb-cream) !important;
+    border: 1px solid var(--eb-gray) !important;
+    border-radius: 0 !important;
+    padding: 0.75rem 1rem !important;
+    width: 100%;
+    transition: border-color var(--eb-transition), box-shadow var(--eb-transition) !important;
+    outline: none !important;
+}
+
+.eb-input:focus {
+    border-color: var(--eb-gold) !important;
+    box-shadow: 0 0 0 3px rgba(212,175,55,0.12) !important;
+    background: var(--eb-white) !important;
+}
+
+.eb-input::placeholder {
+    color: var(--eb-gray-dark) !important;
+    font-style: italic;
+    font-size: 0.85rem !important;
+}
+
+/* Select personalizado */
+select.eb-input {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23D4AF37' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 1rem center !important;
+    padding-right: 2.5rem !important;
+}
+
+/* Errors */
+.eb-field-error {
+    font-family: var(--eb-font-serif);
+    font-size: 0.8rem;
+    color: #c0392b;
+    margin-top: 0.35rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid #c0392b;
+}
+
+/* Nota de privacidad */
+.eb-privacy-note {
+    font-family: var(--eb-font-serif);
+    font-size: 0.78rem;
+    color: var(--eb-gray-dark);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+/* Botón submit */
+.eb-btn-submit {
+    font-family: var(--eb-font-serif);
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--eb-charcoal);
+    background: var(--eb-gold);
+    border: 1px solid var(--eb-gold);
+    padding: 1rem 3rem;
+    cursor: pointer;
+    transition: all var(--eb-transition);
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+.eb-btn-submit:hover {
+    background: var(--eb-gold-dark);
+    border-color: var(--eb-gold-dark);
+    color: var(--eb-white);
+    transform: translateY(-2px);
+    box-shadow: var(--eb-shadow-gold);
+}
+
+.eb-btn-submit:active {
+    transform: translateY(0);
+}
+
+/* ─── MAPA PLACEHOLDER ──────────────────────────────────── */
+.eb-mapa {
+    height: 280px;
+    overflow: hidden;
+}
+
+.eb-mapa-inner {
+    height: 100%;
+    background: linear-gradient(135deg, var(--eb-cream-dark) 0%, var(--eb-gray) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid var(--eb-gray);
+}
+
+.eb-mapa-placeholder {
+    text-align: center;
+}
+
+.eb-mapa-icon {
+    font-size: 3rem;
+    color: var(--eb-gold);
+    opacity: 0.5;
+    display: block;
+    margin-bottom: 0.8rem;
+}
+
+.eb-mapa-texto {
+    font-family: var(--eb-font-serif);
+    font-size: 1rem;
+    color: var(--eb-charcoal);
+    margin-bottom: 0.3rem;
+}
+
+.eb-mapa-sub {
+    font-family: var(--eb-font-serif);
+    font-size: 0.82rem;
+    color: var(--eb-gray-dark);
+    font-style: italic;
+    margin: 0;
+}
+
+/* ─── API CLIMA (WIDGET DINÁMICO) ───────────────────────── */
+.eb-clima-title {
+    color: var(--eb-gray-dark);
+}
+
+.eb-clima-icon {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+    transition: color 0.5s ease;
+}
+
+.eb-clima-value {
+    font-size: calc(1.3rem + .6vw);
+    transition: color 0.5s ease;
+}
+
+/* Clases de estado inyectadas vía JavaScript */
+.eb-temp-calido {
+    color: #f39c12 !important; /* Tono anaranjado/amarillento elegante */
+}
+
+.eb-temp-templado {
+    color: #099cb9 !important; /* Tono azulado */
+}
+
+/* ─── RESPONSIVE ────────────────────────────────────────── */
+@media (max-width: 991px) {
+    .eb-info-block {
+        position: static;
+    }
+    .eb-form-wrapper {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .section-padding { padding: 4rem 0; }
+    .eb-form-wrapper { padding: 1.5rem; }
+    .eb-info-block { padding: 1.5rem; }
+}
