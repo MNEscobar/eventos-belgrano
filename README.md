@@ -28,8 +28,13 @@ El proyecto fue desplegado exitosamente utilizando Render y PostgreSQL.
 - **Sitio Web:** [https://eventos-belgrano.onrender.com/](https://eventos-belgrano.onrender.com/)
 
 ## 🔐 Acceso al Dashboard
-Para ingresar al Panel de Administración y al Dashboard, utilizar las siguientes credenciales:
-- **URL del Panel:** [https://eventos-belgrano.onrender.com/auth/login/](https://eventos-belgrano.onrender.com/auth/login/)
-- **Usuario:** annavillegas@live.com.ar
-- **Codigo De Validacion:** WEB226
-- **Contraseña:** admin123
+
+Para simular el proceso completo de registro y validación (con envío real de correo),
+cloná el repositorio y ejecutalo en local con las credenciales SMTP del archivo `.env`.
+
+- **Correo autorizado para pruebas:** annavillegas@live.com.ar
+- **Código de validación:** WEB226
+- **Flujo:** Registro (`/auth/registro/`) → revisar el correo recibido → Validar (`/auth/validar/`) → Login (`/auth/login/`)
+
+En producción (Render), por las limitaciones del envío de correo saliente, se puede
+acceder directamente con las credenciales ya validadas si el correo no llega a tiempo.
