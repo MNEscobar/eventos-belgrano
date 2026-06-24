@@ -3,7 +3,6 @@ from django.core.exceptions import ValidationError
 from django.utils import timezone
 from .models import Consulta
 
-
 class ConsultaForm(forms.ModelForm):
     class Meta:
         model = Consulta
@@ -53,14 +52,14 @@ class ConsultaForm(forms.ModelForm):
             'mensaje': 'Su Mensaje',
         }
 
-        # ── VALIDACIÓN DE BACKEND PARA LA FECHA ───────────────────
-        def clean_fecha_evento(self):
-            fecha_evento = self.cleaned_data.get('fecha_evento')
-            hoy = timezone.now().date() # Obtenemos solo la fecha de hoy (sin hora)
+    # ── VALIDACIÓN DE BACKEND PARA LA FECHA ───────────────────
+    def clean_fecha_evento(self):
+        fecha_evento = self.cleaned_data.get('fecha_evento')
+        hoy = timezone.now().date() # Obtenemos solo la fecha de hoy (sin hora)
             
-            if fecha_evento and fecha_evento < hoy:
-                raise ValidationError(
-                    "La fecha tentativa no puede ser anterior a la fecha actual."
-                    )
-            # Siempre se debe retornar el campo limpio
-            return fecha_evento
+        if fecha_evento and fecha_evento < hoy:
+            raise ValidationError(
+                "La fecha tentativa no puede ser anterior a la fecha actual."
+                )
+        # Siempre se debe retornar el campo limpio
+        return fecha_evento

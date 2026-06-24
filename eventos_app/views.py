@@ -143,21 +143,7 @@ def contacto(request):
     if request.method == 'POST':
         form = ConsultaForm(request.POST)
         if form.is_valid():
-            consulta = form.save(commit=False)
-            mensaje_analizar = consulta.mensaje.lower()
-
-            # Clasificación automática
-            if any(palabra in mensaje_analizar for palabra in ['precio', 'presupuesto', 'cotización', 'cotizacion', 'costo', 'pagar', 'tarifa', 'reserva']):
-                consulta.categoria = 'Comercial'
-            elif any(palabra in mensaje_analizar for palabra in ['falla', 'error', 'problema', 'sistema', 'web', 'tecnico', 'técnico', 'bug']):
-                consulta.categoria = 'Técnica'
-            elif any(palabra in mensaje_analizar for palabra in ['trabajo', 'cv', 'empleo', 'vacante', 'postular', 'rrhh', 'currículum']):
-                consulta.categoria = 'RRHH'
-            else:
-                consulta.categoria = 'General'
-
-            # Guardamos en la base de datos PostgreSQL
-            consulta.save()
+            consulta = form.save()  # el save() del modelo clasifica automáticamente
 
             # ── 3. ENVÍO DE CORREO AUTOMÁTICO AL USUARIO ──
             asunto = f"[{consulta.get_categoria_display()}] Confirmación de consulta recibida"
