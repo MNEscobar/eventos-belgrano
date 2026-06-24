@@ -1,4 +1,4 @@
-# Programación Web ll — Segundo Parcial Programación Web II
+# Programación Web ll — Segundo Parcial
 
 | Nombre | Matrícula |
 |--------|-----------|

@@ -66,3 +66,31 @@ body {
     text-align: center;
     border-top: 1px solid #f1f3f5;
 }
+
+/* =========================================
+   DISEÑO RESPONSIVE (Móviles pequeños)
+   ========================================= */
+@media (max-width: 575.98px) {
+    /* Reducimos el padding lateral extremo de la tarjeta para celulares */
+    .auth-header {
+        padding: 2rem 1.5rem 0.5rem;
+    }
+    
+    .auth-body {
+        padding: 1rem 1.5rem 2rem;
+    }
+
+    /* Achicamos el tamaño del ícono y el título principal */
+    .auth-header i {
+        font-size: 2rem !important;
+    }
+    
+    .auth-header h3 {
+        font-size: 1.5rem;
+    }
+
+    /* Botones e inputs ligeramente más compactos */
+    .form-control, .btn-auth {
+        font-size: 0.95rem;
+    }
+}
