@@ -1,0 +1,68 @@
+/* authentication/static/authentication/css/auth_style.css */
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #fdfbf7; /* Mantenemos el tono crema del dashboard */
+    color: #212529;
+}
+
+/* Contenedor Flex para centrar vertical y horizontalmente */
+.auth-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+/* Tarjeta moderna */
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.auth-header {
+    padding: 2.5rem 2rem 1rem;
+    text-align: center;
+}
+
+.auth-body {
+    padding: 1rem 2.5rem 2.5rem;
+}
+
+/* Estilización de los inputs */
+.input-group-text {
+    background-color: #f8f9fa;
+    border-color: #e9ecef;
+}
+
+.form-control {
+    padding: 0.75rem 1rem;
+    background-color: #f8f9fa;
+    border-color: #e9ecef;
+}
+
+.form-control:focus {
+    background-color: #fff;
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+}
+
+.btn-auth {
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.auth-footer {
+    background-color: #f8f9fa;
+    padding: 1.25rem;
+    text-align: center;
+    border-top: 1px solid #f1f3f5;
+}
