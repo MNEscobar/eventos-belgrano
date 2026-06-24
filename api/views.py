@@ -1,4 +1,4 @@
-from rest_framework import generics
+from rest_framework import generics, permissions
 from eventos_app.models import Consulta
 from .serializers import ConsultaSerializer
 
@@ -8,3 +8,4 @@ class ConsultaListAPIView(generics.ListAPIView):
     """
     queryset = Consulta.objects.all()
     serializer_class = ConsultaSerializer
+    permission_classes = [permissions.IsAuthenticated]
