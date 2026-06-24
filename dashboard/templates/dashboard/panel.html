@@ -126,6 +126,12 @@
                                     <button class="btn btn-sm btn-light border text-primary fw-medium" data-bs-toggle="modal" data-bs-target="#modalConsulta{{ consulta.id }}">
                                         Ver Detalle
                                     </button>
+                                    <a href="{% url 'dashboard:modificar' consulta.id %}" class="btn btn-sm btn-outline-dark fw-medium">
+                                        <i class="bi bi-pencil"></i> Modificar
+                                    </a>
+                                    <a href="{% url 'dashboard:eliminar' consulta.id %}" class="btn btn-sm btn-outline-danger fw-medium">
+                                        <i class="bi bi-trash"></i> Eliminar
+                                    </a>
                                 </td>
                             </tr>
 

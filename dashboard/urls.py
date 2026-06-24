@@ -6,4 +6,6 @@ app_name = 'dashboard'
 
 urlpatterns = [
     path('', views.panel_control, name='panel'),
+    path('modificar/<int:consulta_id>/', views.panel_modificar, name='modificar'),
+    path('eliminar/<int:consulta_id>/', views.panel_eliminar, name='eliminar'),
 ]
