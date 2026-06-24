@@ -1,139 +1,185 @@
-{% extends 'base.html' %}
 {% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control - Eventos Belgrano</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{% static 'dashboard/css/panel.css' %}">
+</head>
+<body>
 
-{% block content %}
-<div class="container py-5">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>Panel de Control - Eventos Belgrano</h2>
-        <a href="{% url 'authentication:logout' %}" class="btn btn-outline-danger">
-            <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
-        </a>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark eb-admin-navbar mb-5">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="{% url 'inicio' %}" title="Volver a la web pública">
+                <i class="bi bi-shield-lock me-2 text-warning"></i>
+                <span>EVENTOS BELGRANO <span class="fw-light text-muted">| ADMIN</span></span>
+            </a>
+            
+            <div class="d-flex align-items-center">
+                <span class="text-light me-4 d-none d-md-block">
+                    <i class="bi bi-person-circle me-1"></i> Hola, {{ request.user.email }}
+                </span>
+                <a href="{% url 'authentication:logout' %}" class="btn btn-sm btn-outline-warning fw-semibold">
+                    <i class="bi bi-box-arrow-right"></i> Salir
+                </a>
+            </div>
+        </div>
+    </nav>
 
-    <div class="row mb-5 text-center g-3">
-        <div class="col-md col-sm-6">
-            <div class="card text-white bg-dark shadow-sm h-100">
-                <div class="card-body">
-                    <h6 class="card-title text-uppercase text-muted mb-2">Total Consultas</h6>
-                    <h2 class="display-5 fw-bold mb-0">{{ stats.total }}</h2>
-                </div>
-            </div>
+    <div class="container-fluid px-4 pb-5">
+        
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="fw-bold text-dark mb-0">Resumen de Actividad</h2>
+            <button class="btn btn-primary btn-sm d-none d-md-inline-block" onclick="window.print()">
+                <i class="bi bi-printer me-1"></i> Exportar Reporte
+            </button>
         </div>
-        <div class="col-md col-sm-6">
-            <div class="card text-white bg-success shadow-sm h-100">
-                <div class="card-body">
-                    <h6 class="card-title text-uppercase mb-2">Comercial</h6>
-                    <h2 class="display-5 fw-bold mb-0">{{ stats.comercial }}</h2>
-                </div>
-            </div>
-        </div>
-        <div class="col-md col-sm-6">
-            <div class="card text-white bg-danger shadow-sm h-100">
-                <div class="card-body">
-                    <h6 class="card-title text-uppercase mb-2">Técnica</h6>
-                    <h2 class="display-5 fw-bold mb-0">{{ stats.tecnica }}</h2>
-                </div>
-            </div>
-        </div>
-        <div class="col-md col-sm-6">
-            <div class="card text-dark bg-info shadow-sm h-100">
-                <div class="card-body">
-                    <h6 class="card-title text-uppercase mb-2">RRHH</h6>
-                    <h2 class="display-5 fw-bold mb-0">{{ stats.rrhh }}</h2>
-                </div>
-            </div>
-        </div>
-        <div class="col-md col-sm-6">
-            <div class="card text-dark bg-light shadow-sm h-100 border">
-                <div class="card-body">
-                    <h6 class="card-title text-uppercase text-muted mb-2">General</h6>
-                    <h2 class="display-5 fw-bold mb-0">{{ stats.general }}</h2>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="card shadow-sm border-0">
-        <div class="card-header bg-white border-bottom py-3">
-            <h5 class="mb-0 text-primary fw-bold">Registro de Consultas Recientes</h5>
+        <div class="row mb-5 text-center g-4">
+            
+            <div class="col-md col-sm-6">
+                <div class="card text-white bg-primary shadow-sm h-100 stat-card">
+                    <div class="card-body py-4">
+                        <h6 class="card-title text-uppercase mb-3 text-white-50">Total Consultas</h6>
+                        <h2 class="display-5 fw-bold mb-0">{{ stats.total }}</h2>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md col-sm-6">
+                <div class="card text-white bg-success shadow-sm h-100 stat-card">
+                    <div class="card-body py-4">
+                        <h6 class="card-title text-uppercase mb-3 text-white-50">Comercial</h6>
+                        <h2 class="display-5 fw-bold mb-0">{{ stats.comercial }}</h2>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md col-sm-6">
+                <div class="card text-white bg-danger shadow-sm h-100 stat-card">
+                    <div class="card-body py-4">
+                        <h6 class="card-title text-uppercase mb-3 text-white-50">Técnica</h6>
+                        <h2 class="display-5 fw-bold mb-0">{{ stats.tecnica }}</h2>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md col-sm-6">
+                <div class="card shadow-sm h-100 stat-card bg-amber-custom">
+                    <div class="card-body py-4">
+                        <h6 class="card-title text-uppercase mb-3 text-dark" style="opacity: 0.7;">RRHH</h6>
+                        <h2 class="display-5 fw-bold mb-0">{{ stats.rrhh }}</h2>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md col-sm-6">
+                <div class="card text-dark bg-white shadow-sm h-100 stat-card border">
+                    <div class="card-body py-4">
+                        <h6 class="card-title text-uppercase text-muted mb-3">General</h6>
+                        <h2 class="display-5 fw-bold mb-0 text-dark">{{ stats.general }}</h2>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card-body p-0">
-            <div class="table-responsive">
-                <table class="table table-hover align-middle mb-0">
-                    <thead class="table-light text-muted">
-                        <tr>
-                            <th class="ps-4">Fecha</th>
-                            <th>Cliente</th>
-                            <th>Email</th>
-                            <th>Tipo de Evento</th>
-                            <th>Categoría</th>
-                            <th class="pe-4 text-end">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for consulta in consultas %}
-                        <tr>
-                            <td class="ps-4">{{ consulta.fecha_consulta|date:"d/m/Y H:i" }}</td>
-                            <td class="fw-semibold">{{ consulta.nombre }}</td>
-                            <td><a href="mailto:{{ consulta.email }}" class="text-decoration-none text-muted">{{ consulta.email }}</a></td>
-                            <td>{{ consulta.get_tipo_evento_display }}</td>
-                            <td>
-                                <span class="badge rounded-pill 
-                                    {% if consulta.categoria == 'Comercial' %}bg-success
-                                    {% elif consulta.categoria == 'Técnica' %}bg-danger
-                                    {% elif consulta.categoria == 'RRHH' %}bg-info text-dark
-                                    {% else %}bg-secondary{% endif %}">
-                                    {{ consulta.get_categoria_display }}
-                                </span>
-                            </td>
-                            <td class="pe-4 text-end">
-                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalConsulta{{ consulta.id }}">
-                                    Ver Mensaje
-                                </button>
-                            </td>
-                        </tr>
 
-                        <div class="modal fade" id="modalConsulta{{ consulta.id }}" tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header border-bottom-0">
-                                        <h5 class="modal-title fw-bold">Consulta de {{ consulta.nombre }}</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body bg-light">
-                                        <div class="mb-3">
-                                            <small class="text-muted d-block mb-1">Teléfono:</small>
-                                            <span>{{ consulta.telefono }}</span>
+        <div class="card border-0 table-card bg-white">
+            <div class="card-header bg-white border-bottom py-3">
+                <h5 class="mb-0 fw-bold text-dark"><i class="bi bi-table me-2 text-primary"></i>Registros Recientes</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light text-muted">
+                            <tr>
+                                <th class="ps-4 py-3">Fecha</th>
+                                <th class="py-3">Cliente</th>
+                                <th class="py-3">Email</th>
+                                <th class="py-3">Tipo de Evento</th>
+                                <th class="py-3">Categoría</th>
+                                <th class="pe-4 text-end py-3">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for consulta in consultas %}
+                            <tr>
+                                <td class="ps-4 text-muted">{{ consulta.fecha_consulta|date:"d/m/Y H:i" }}</td>
+                                <td class="fw-semibold text-dark">{{ consulta.nombre }}</td>
+                                <td><a href="mailto:{{ consulta.email }}" class="text-decoration-none text-primary">{{ consulta.email }}</a></td>
+                                <td class="text-muted">{{ consulta.get_tipo_evento_display }}</td>
+                                <td>
+                                    <span class="badge rounded-pill badge-custom
+                                        {% if consulta.categoria == 'Comercial' %}bg-success bg-opacity-10 text-success
+                                        {% elif consulta.categoria == 'Técnica' %}bg-danger bg-opacity-10 text-danger
+                                        {% elif consulta.categoria == 'RRHH' %}bg-opacity-amber
+                                        {% else %}bg-secondary bg-opacity-10 text-secondary{% endif %}">
+                                        {{ consulta.get_categoria_display }}
+                                    </span>
+                                </td>
+                                <td class="pe-4 text-end">
+                                    <button class="btn btn-sm btn-light border text-primary fw-medium" data-bs-toggle="modal" data-bs-target="#modalConsulta{{ consulta.id }}">
+                                        Ver Detalle
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <div class="modal fade" id="modalConsulta{{ consulta.id }}" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header border-bottom-0 bg-light">
+                                            <h5 class="modal-title fw-bold text-dark">Consulta de {{ consulta.nombre }}</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <div class="mb-3">
-                                            <small class="text-muted d-block mb-1">Detalles del Evento:</small>
-                                            <span>Para el <strong>{{ consulta.fecha_evento|date:"d/m/Y" }}</strong> (Aprox. {{ consulta.cantidad_invitados }} invitados)</span>
-                                        </div>
-                                        <div class="mb-2">
-                                            <small class="text-muted d-block mb-2">Mensaje del cliente:</small>
-                                            <div class="p-3 bg-white border rounded shadow-sm">
-                                                {{ consulta.mensaje|linebreaks }}
+                                        <div class="modal-body p-4">
+                                            <div class="row mb-3">
+                                                <div class="col-6">
+                                                    <small class="text-muted d-block text-uppercase modal-metadata-label">Teléfono</small>
+                                                    <span class="fw-medium text-dark">{{ consulta.telefono }}</span>
+                                                </div>
+                                                <div class="col-6">
+                                                    <small class="text-muted d-block text-uppercase modal-metadata-label">Fecha del Evento</small>
+                                                    <span class="fw-medium text-dark">{{ consulta.fecha_evento|date:"d/m/Y" }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <small class="text-muted d-block text-uppercase mb-1 modal-metadata-label">Invitados Estimados</small>
+                                                <span class="badge bg-secondary">{{ consulta.cantidad_invitados }} personas</span>
+                                            </div>
+                                            <div class="mb-2">
+                                                <small class="text-muted d-block text-uppercase mb-2" modal-metadata-label>Mensaje Original</small>
+                                                <div class="p-3 bg-light border rounded text-dark lh-base">
+                                                    {{ consulta.mensaje|linebreaks }}
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="modal-footer border-top-0">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                        <div class="modal-footer border-top-0">
+                                            <button type="button" class="btn btn-dark w-100" data-bs-dismiss="modal">Cerrar</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        {% empty %}
-                        <tr>
-                            <td colspan="6" class="text-center py-5 text-muted">
-                                <i class="bi bi-inbox display-4 d-block mb-3"></i>
-                                No hay consultas registradas actualmente.
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                            {% empty %}
+                            <tr>
+                                <td colspan="6" class="text-center py-5 text-muted">
+                                    <i class="bi bi-inbox display-4 d-block mb-3 text-light"></i>
+                                    <p class="mb-0 fs-5">No hay consultas registradas actualmente.</p>
+                                    <small>Cuando un cliente envíe un formulario, aparecerá aquí.</small>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
-{% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
