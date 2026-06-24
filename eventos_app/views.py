@@ -150,13 +150,17 @@ def contacto(request):
             cuerpo = (
                 f"Hola {consulta.nombre},\n\n"
                 f"Recibimos tu consulta con los siguientes datos:\n\n"
+                f"Nombre: {consulta.nombre}\n"
+                f"Correo electrónico: {consulta.email}\n"
+                f"Teléfono: {consulta.telefono}\n"
                 f"Tipo de evento: {consulta.get_tipo_evento_display()}\n"
                 f"Fecha tentativa: {consulta.fecha_evento}\n"
                 f"Cantidad de invitados: {consulta.cantidad_invitados}\n"
                 f"Mensaje: {consulta.mensaje}\n\n"
+                f"Categoría asignada: {consulta.get_categoria_display()}\n\n"
                 f"Nos pondremos en contacto a la brevedad.\n"
                 f"— Eventos Belgrano"
-            )
+                )
             try:
                 send_mail(
                     subject=asunto,
